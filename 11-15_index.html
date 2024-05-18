@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15 - 陣列進階操作 every</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      font-family: "Microsoft JhengHei", "Heiti TC", "sans-serif";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-image: url("../../images/bg/3.jpg");
+    }
+    #app {
+      width: 600px;
+    }
+    .item {
+      margin-bottom: 50px;
+    }
+    .item h3 {
+      margin-bottom: 10px;
+    }
+    .item p {
+      margin-bottom: 10px;
+      line-height: 25px;
+    }
+    button {
+      display: block;
+      width: 100px;
+      height: 30px;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <h1>制度規章</h1>
+      <form>
+        <div class="item">
+          <h3>● 規章一</h3>
+          <p>
+            規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章!
+          </p>
+          <input id="query1" type="checkbox" name="query1" />
+          <label for="query1">你願意遵守以上規章?</label>
+        </div>
+
+        <div class="item">
+          <h3>● 規章二</h3>
+          <p>
+            規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章!
+          </p>
+          <input id="query2" type="checkbox" name="query2" />
+          <label for="query2">你願意遵守以上規章?</label>
+        </div>
+
+        <div class="item">
+          <h3>● 規章三</h3>
+          <p>
+            規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章規章!
+          </p>
+          <input id="query3" type="checkbox" name="query3" />
+          <label for="query3">你願意遵守以上規章?</label>
+        </div>
+
+        <button disabled id="submit">送出</button>
+      </form>
+    </div>
+    <script>
+      // 1. 選擇 id 為 "submit" 的元素並將其存儲在變量 "submit" 中
+      const submit = document.querySelector("#submit");
+
+      // 2. 為 id 為 "query1", "query2", "query3" 的元素添加 "change" 事件監聽器
+      // 當這些元素的狀態變化時，會調用 "changeFn" 函數
+      document.querySelector("#query1").addEventListener("change", changeFn);
+      document.querySelector("#query2").addEventListener("change", changeFn);
+      document.querySelector("#query3").addEventListener("change", changeFn);
+
+      // 3. "chackList" 函數檢查所有選擇框是否都被選中
+      const chackList = () => {
+        // 創建一個包含所有選擇框的陣列
+        const listArr = [
+          document.querySelector("#query1"),
+          document.querySelector("#query2"),
+          document.querySelector("#query3"),
+        ];
+
+        // 使用 "every" 方法檢查所有選擇框是否都被選中
+        // "every" 方法會對陣列中的每個元素執行一個函數
+        // 如果該函數對每個元素都返回 "true"，則 "every" 方法返回 "true"
+        // 在這裡，我們的函數檢查每個選擇框是否被選中
+        const isCheck = listArr.every((item) => {
+          return item.checked === true;
+        });
+
+        // 如果所有選擇框都被選中，則返回 "false"，否則返回 "true"
+        return !isCheck;
+      };
+
+      // 4. "changeFn" 函數會在每次選擇框的狀態變化時被調用
+      // 它調用 "chackList" 函數來檢查所有選擇框的狀態，並將結果賦值給 "submit" 按鈕的 "disabled" 屬性
+      // 這樣，如果所有選擇框都被選中，"submit" 按鈕就會被啟用，否則就會被禁用
+      function changeFn() {
+        submit.disabled = chackList();
+      }
+
+      // 為 "submit" 按鈕添加 "click" 事件監聽器，當按鈕被點擊時，會彈出一個提示框顯示 "送出成功"
+      submit.addEventListener("click", () => {
+        alert("送出成功");
+      });
+    </script>
+  </body>
+</html>

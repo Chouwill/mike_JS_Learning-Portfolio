@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>變換英文字母大小寫</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Microsoft JhengHei", "Heiti TC", "sans-serif";
+      background-image: url("../images/bg.jpg");
+      background-size: cover;
+      background-position: 50% 0%;
+    }
+    input {
+      display: block;
+      width: 400px;
+      height: 30px;
+    }
+
+    button {
+      display: block;
+      width: 100px;
+      height: 30px;
+      margin: 10px auto 0 auto;
+    }
+
+    h1 {
+      display: block;
+      width: 100%;
+      background-color: #fff;
+      text-align: center;
+      color: darkgrey;
+      font-size: 20px;
+      line-height: 50px;
+    }
+  </style>
+  <body>
+    <div>
+      <h1>請輸入老師的英文名字</h1>
+      <input id="searchBar" type="text" />
+      <button id="submit">送出</button>
+    </div>
+
+    <script>
+      // toLocaleLowerCase 大寫轉小寫
+      // toLocaleUpperCase 小寫轉大寫
+
+      const searchBar = document.querySelector("#searchBar");
+      const submit = document.querySelector("#submit");
+
+      submit.addEventListener("click", () => {
+        const value = searchBar.value.trim();
+        const tlc = value.toLocaleLowerCase();
+        if (tlc === "") {
+          alert("欄位不可以空白");
+          return;
+        }
+        if (tlc === "mike") {
+          alert("成功");
+        }
+        console.log(tlc);
+      });
+    </script>
+  </body>
+</html>

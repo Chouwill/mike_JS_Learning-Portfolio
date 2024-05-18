@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13 - function event return</title>
+  </head>
+  <body>
+    <button class="btn">請點我</button>
+    <p class="txt"></p>
+
+    <script>
+            const title = document.querySelector(".txt");
+            const btn = document.querySelector(".btn");
+
+            const txt = `我是一段文字<a href="#">yahoo</a>我是YAHOO官網連結`;
+
+            // 當按鈕被點擊時，執行這個函式
+            btn.addEventListener("click", function (e) {
+              // 輸出事件對象到控制台，可以查看事件的詳細信息
+              console.log(e);
+              // 將標題的內容設置為 txt 變數的值
+              title.innerHTML = txt;
+            });
+
+            // 當滑鼠移動到按鈕上時，執行這個函式
+            btn.addEventListener("mouseover", function (e) {
+              // 輸出事件對象到控制台，可以查看事件的詳細信息
+              console.log(e);
+              // 這行程式碼被註解掉了，所以不會執行
+              // 如果取消註解，則會在滑鼠移動到按鈕上時將標題的內容設置為 txt 變數的值
+              // title.innerHTML = txt;
+            });
+
+            // 這段程式碼中的 `function(e)` 是一個匿名函式，它被用作事件處理器。在這裡，`e` 是一個事件對象，它包含了與觸發事件相關的所有信息。
+
+
+
+      // 事件對象 `e` 包含了許多有用的屬性和方法，例如：
+
+      // - e.target`：觸發事件的元素
+      // - e.type`：事件的類型（例如 "click" 或 "mouseover"）
+      // - e.preventDefault()：阻止事件的預設行為
+      // - e.stopPropagation()：阻止事件的傳播
+
+      // 你可以使用這些屬性和方法來更詳細地控制事件的行為。
+    </script>
+  </body>
+</html>

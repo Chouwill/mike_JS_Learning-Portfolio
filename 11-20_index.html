@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>淺拷貝與深拷貝-1-2</title>
+  </head>
+  <body>
+    <script>
+      // 創建一個名為 obj1 的物件
+      const obj1 = {
+        name: "mike",
+        age: 12,
+      };
+
+      // 使用 Object.assign() 方法創建一個新的物件 obj2，並將 obj1 的所有屬性複製到 obj2
+      // Object.assign() 創建的是淺複製，所以如果修改 obj1 的屬性，obj2 的對應屬性不會改變
+      const obj2 = Object.assign({}, obj1);
+
+      // 修改 obj1 的 name 屬性
+      obj1.name = "will";
+
+      // 打印 obj1 和 obj2 到控制台
+    //   console.log(obj1); // { name: "will", age: 12 }
+    //   console.log(obj2); // { name: "mike", age: 12 }
+
+      // 創建一個名為 obj4 的物件
+      const obj4 = {
+        name: "Red",
+        age: 55,
+      };
+
+      // 使用展開運算符 ... 創建一個新的物件 obj5，並將 obj4 的所有屬性複製到 obj5
+      // 展開運算符 ... 也創建的是淺複製，所以如果修改 obj4 的屬性，obj5 的對應屬性不會改變
+      const obj5 = { ...obj4 };
+
+      // 打印 obj5 到控制台
+      console.log(obj5); // { name: "Red", age: 55 }
+    </script>
+  </body>
+</html>

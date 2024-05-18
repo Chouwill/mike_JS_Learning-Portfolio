@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 - for 迴圈與 var 還有 let 的作用域概念 - 1</title>
+  </head>
+  <body>
+    <script>
+            //  用 var 宣告
+            for (var i = 0; i < 5; i++) {
+              setTimeout(() => {
+              //   console.log(i);
+              }, 1000 * i);
+            }
+            // 這兩個迴圈的主要差異在於 `var` 和 `let` 的作用域，以及如何與非同步函數 `setTimeout` 互動。
+
+            // 1. `var` 宣告的變數在整個函數範圍內都是有效的，包括迴圈。所以在 `setTimeout` 中，當回調函數被調用時，`i` 的值已經是迴圈結束後的值，也就是 5。這就是為什麼如果你取消註解 `console.log(i)`，你會看到五次的 5。這是因為所有的 `setTimeout` 都在同一個事件循環中被註冊，並且他們共享同一個 `i` 變數。
+
+
+            //  用 let 宣告
+            for (let i = 0; i < 5; i++) {
+              setTimeout(() => {
+                console.log(i);
+              }, 1000 * i);
+            }
+
+            // 2. `let` 宣告的變數只在其聲明的區塊（block）內有效。在每次迴圈迭代時，都會創建一個新的 `i` 變數，並將其設為當前的迭代值。所以在 `setTimeout` 中，每個回調函數都會記住自己的 `i` 值。這就是為什麼你會看到 0 到 4 的數字被印出。這是因為每次迴圈迭代都在新的區塊範圍中，並且每個 `setTimeout` 都有自己的 `i` 變數。
+
+
+
+
+      // 這就是 `var` 和 `let` 在非同步操作中的主要差異。
+
+      // 更具體的來說，當你使用 `var` 來宣告變數，JavaScript 會在你的程式碼中進行所謂的 "變數提升"（hoisting），這意味著 `var` 變數的宣告會被提升到它所在的作用域（全域或函數）的頂部。這就是為什麼 `var` 變數在 `setTimeout` 回調函數中的值會是最後一個迭代的值。
+
+      // 而當你使用 `let` 來宣告變數，變數將會在它被宣告的區塊（block）內有效，並且不會被提升。這就是為什麼每個 `setTimeout` 回調函數都能記住它們各自的 `i` 值。
+    </script>
+  </body>
+</html>

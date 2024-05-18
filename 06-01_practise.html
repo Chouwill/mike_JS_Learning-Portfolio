@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>while迴圈練習</title>
+  </head>
+  <style>
+    h1 {
+      font-size: 40px;
+      text-align: center;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: greenyellow;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <h1 class="title">第一次你好</h1>
+    </div>
+
+    <script>
+      let box = document.querySelector(".box");
+      let html = "";
+      //   console.log(box);
+
+      let i = 0;
+      while (i < 15) {
+        console.log(i);
+        i = i + 1;
+        html += `<h1 class="title box">第${i}次你好</h1>`;
+        console.log(html);
+      }
+      box.innerHTML = html;
+
+
+      // 提出並詢問
+
+    </script>
+  </body>
+</html>

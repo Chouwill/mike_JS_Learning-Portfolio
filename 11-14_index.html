@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      font-family: "Microsoft JhengHei", "Heiti TC", "sans-serif";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url("../images/bg2.jpg");
+      background-size: cover;
+      background-position: 50% 0%;
+    }
+    li {
+      list-style-type: none;
+    }
+    #app {
+      width: 500px;
+    }
+    #app > ul.tit {
+      width: 100%;
+      overflow: hidden;
+      background-color: #fff;
+    }
+    #app > ul.tit > li {
+      width: 25%;
+      line-height: 30px;
+      float: left;
+      color: #000;
+      text-align: center;
+      border: 1px solid #000;
+    }
+
+    ul.tit2 {
+      width: 100%;
+      overflow: hidden;
+      background-color: rgba(256, 256, 256, 0.6);
+    }
+    ul.tit2 > li {
+      width: 25%;
+      line-height: 30px;
+      float: left;
+      color: #000;
+      text-align: center;
+      border: 1px solid #000;
+      font-size: 12px;
+    }
+    ul.tit_select {
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+    ul.tit_select > li {
+      display: block;
+      width: 25%;
+      height: 30px;
+      line-height: 30px;
+      float: left;
+      color: #000;
+      text-align: center;
+      font-size: 12px;
+    }
+    ul.tit_select > li > select {
+      display: block;
+      width: 90%;
+      height: 100%;
+      border: 0;
+      margin: 0 auto;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <ul class="tit_select">
+        <li></li>
+        <li>
+          <select id="user_money">
+            <option value="0">選擇錢</option>
+            <option value="300">大於300</option>
+            <option value="700">大於700</option>
+            <option value="10000">大於10000</option>
+          </select>
+        </li>
+        <li>
+          <select id="user_age">
+            <option value="0">選擇年齡</option>
+            <option value="10">10歲以上</option>
+            <option value="20">20歲以上</option>
+            <option value="30">30歲以上</option>
+          </select>
+        </li>
+        <li>
+          <select id="user_sex">
+            <option value="no">選擇性別</option>
+            <option value="boy">boy</option>
+            <option value="girl">girl</option>
+          </select>
+        </li>
+      </ul>
+      <ul class="tit">
+        <li>名字</li>
+        <li>戶頭錢</li>
+        <li>年齡</li>
+        <li>性別</li>
+      </ul>
+      <div class="itemList">
+        <!-- <ul class="tit2">
+                  <li>小豬</li>
+                  <li>12000</li>
+                  <li>12</li>
+                  <li>boy</li>
+              </ul> -->
+      </div>
+    </div>
+
+    <script src="./11_11-12_forEach-ALL/data.js"></script>
+    <script>
+      // 獲取HTML元素
+      const itemList = document.querySelector(".itemList");
+      const user_money = document.querySelector("#user_money");
+      const user_age = document.querySelector("#user_age");
+      const user_sex = document.querySelector("#user_sex");
+
+      let html = "";
+      const newData = data; // 從外部腳本獲取的數據
+
+      // 這個函數用於渲染HTML元素
+      function renderDOM(newArr) {
+        html = "";
+        newArr.forEach((item) => {
+          html += `
+                <ul class="tit2">
+                    <li>${item.name}</li>
+                    <li>${item.money}</li>
+                    <li>${item.age}</li>
+                    <li>${item.sex}</li>
+                </ul>
+              `;
+        });
+        itemList.innerHTML = html; // 更新HTML元素的內容
+      }
+
+      renderDOM(newData); // 初始渲染
+
+      // 這個函數用於過濾出錢數大於指定值的項目
+      function filterMoney(data) {
+        const money = Number(data);
+        // const arr = [];
+        // newData.forEach((item) => {
+        //   if (item.money > money) {
+        //     arr.push(item);
+        //   }
+        // });
+        const arr = newData.filter((item) => item.money > money); // 如果項目的錢數大於指定值，則將其添加到新的數組中);
+
+        renderDOM(arr); // 重新渲染HTML元素
+      }
+
+      // 這個函數用於過濾出年齡大於指定值的項目
+      function filterAge(data) {
+        const age = Number(data);
+        // const arr = [];
+        // newData.forEach((item) => {
+        //   if (item.age > age) {
+        //     arr.push(item);
+        //   }
+        // });
+        const arr = newData.filter((item) => item.age > age);
+        renderDOM(arr); // 重新渲染HTML元素
+      }
+
+      // 這個函數用於過濾出性別等於指定值的項目
+      function filterSex(data) {
+        // let arr = [];
+        // newData.forEach((item) => {
+        //   if (item.sex === data) {
+        //     arr.push(item);
+        //   }
+        //   if (data === "no") {
+        //     arr = newData;
+        //   }
+        // });
+
+        const arr = newData.filter((item) => {
+          if (data === "no") {
+            return item; // 如果指定值為"no"，則將所有項目添加到新的數組中
+          }
+          return item.sex === data; // 如果項目的性別等於指定值，則將其添加到新的數組中
+        });
+        renderDOM(arr); // 重新渲染HTML元素
+      }
+
+      // 為HTML元素添加事件監聽器，當元素的值改變時，調用相應的過濾函數
+      user_money.addEventListener("change", (e) => {
+        filterMoney(e.target.value);
+      });
+      user_age.addEventListener("change", (e) => {
+        filterAge(e.target.value);
+      });
+      user_sex.addEventListener("change", (e) => {
+        filterSex(e.target.value);
+      });
+    </script>
+  </body>
+</html>

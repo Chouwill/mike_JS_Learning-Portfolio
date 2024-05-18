@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>箭頭函式 arrow function</title>
+  </head>
+  <body>
+    <div id="app">
+      <img src="../images/logo1.png" alt="" />
+      <a id="Btn" class="btn_1" href="javascript:;">匿名函式</a>
+      <a id="Btn" class="btn_2" href="javascript:;">箭頭函式</a>
+    </div>
+
+    <script>
+      // 一般的 function   無法使用箭頭函式
+      function HelloWorld1() {
+        // console.log("HelloWorld 1");
+      }
+
+      // 用變數付值的 function
+      const HelloWorld2 = function () {
+        // console.log("HelloWorld 2");
+      };
+
+      // 箭頭函式的縮寫
+      const HelloWorld3 = () => {
+        // console.log("HelloWorld 3");
+      };
+
+      //一般的匿名函式
+      document.querySelector(".btn_1").addEventListener("click", function (e) {
+        // console.log(this);
+        // console.log(e.target);
+      });
+
+      //箭頭函式
+      document.querySelector(".btn_2").addEventListener("click", (e) => {
+        console.log(this);  // 無作用，並且會指向windows
+        console.log(e.target);  // 這才可以
+      });
+    </script>
+  </body>
+</html>

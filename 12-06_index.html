@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>取得字串位置 indexOf</title>
+  </head>
+  <body>
+    <script>
+        // 定義一個陣列 arr 和一個字串 str
+        const arr = ["mike", "jacky", "andy", "ash", "scars"];
+        const str = "123@456789";
+      
+        // str.indexOf("@")：在字串 str 中查找 "@" 的位置。如果找到，則返回 "@" 在 str 中的索引；如果找不到，則返回 -1。
+        // 在這個例子中，"@" 在 str 中的位置是 3，所以返回 3。
+        console.log(str.indexOf("@"));
+      
+        // arr.indexOf("mike")：在陣列 arr 中查找 "mike"。如果找到，則返回 "mike" 在 arr 中的索引；如果找不到，則返回 -1。
+        // 在這個例子中，"mike" 在 arr 中的位置是 0，所以返回 0。
+        console.log(arr.indexOf("mike"));
+      
+        // arr.includes("eee")：檢查陣列 arr 是否包含 "eee"。如果包含，則返回 true；否則返回 false。
+        // 在這個例子中，arr 不包含 "eee"，所以返回 false。
+        console.log(arr.includes("eee"));
+      
+        // str.includes("9")：檢查字串 str 是否包含 "9"。如果包含，則返回 true；否則返回 false。
+        // 在這個例子中，str 包含 "9"，所以返回 true。
+        console.log(str.includes("9"));
+      </script>
+  </body>
+</html>

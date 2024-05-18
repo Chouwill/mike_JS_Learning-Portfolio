@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pass by value 還有 Pass by reference</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        # Pass by value
+        - String
+        - Number
+        - Boolean
+        - Undefined
+        - Null
+        這些類型的數據在賦值或傳遞時，實際上是將值複製一份給新的變數，兩個變數之間互不影響。
+      */
+      let a = 1;
+      let b = a; // b 獲得 a 的值，此時 b 為 1
+      a = 5; // 改變 a 的值，不會影響到 b
+      console.log(b); // 輸出 1，證明 b 的值並未因 a 的改變而改變
+
+      /* 
+        # Pass by reference
+        - Array
+        - Object
+        這些類型的數據在賦值或傳遞時，實際上是將記憶體地址複製一份給新的變數，兩個變數指向同一塊記憶體，因此一個變數的改變會影響到另一個變數。
+      */
+
+      const arr = [0, 0, 0];
+      const arr2 = arr; // arr2 和 arr 指向同一塊記憶體
+
+      const obj1 = { name: "mike" };
+      const obj2 = obj1; // obj2 和 obj1 指向同一塊記憶體
+      obj2.name = "will"; // 改變 obj2 的 name 屬性
+
+      console.log(obj1); // 輸出 { name: "will" }，證明 obj1 的值也被改變了
+    </script>
+  </body>
+</html>

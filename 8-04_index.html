@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03 - 計時器進階組合 - 2 ( 播放、暫停、重新 )</title>
+  </head>
+  <style>
+    h1 {
+      text-align: center;
+      font-size: 45px;
+    }
+    .btn {
+      display: flex;
+      justify-content: center;
+    }
+    a {
+      display: block;
+      margin: 0 auto;
+      padding: 15px;
+      background-color: rgb(181, 175, 175);
+      border-radius: 20px;
+    }
+
+    .btnactive {
+      background-color: red;
+    }
+  </style>
+  <body>
+    <h1 class="timeTxt">0</h1>
+    <div class="btn">
+      <a id="play" class="">播放</a>
+      <a id="stop" class="">暫停</a>
+      <a id="reset" class="">Reset</a>
+    </div>
+
+    <script>
+      let timeTxt = document.querySelector(".timeTxt");
+      let play = document.querySelector("#play");
+      const stop = document.querySelector("#stop");
+      let reset = document.querySelector("#reset");
+
+      let idNum = 0;
+      let timer = null; // 1.為何需創建空值
+
+      play.addEventListener("click", playFn);
+      stop.addEventListener("click", stopFn);
+      reset.addEventListener("click", resetFn);
+
+      function resetAvtive() {
+        play.classList.remove("btnactive");
+        stop.classList.remove("btnactive");
+        reset.classList.remove("btnactive");
+      }
+
+      function playFn(e) {
+        timer = setInterval(() => {
+          // 2.並在這插入
+          idNum++;
+          timeTxt.innerText = idNum;
+        }, 1000);
+        resetAvtive();
+        this.classList.add("btnactive");
+        // e.target.classList.add("btnactive");
+      }
+
+      function stopFn() {
+        clearInterval(timer); // 3.才能執行
+        resetAvtive();
+        this.classList.add("btnactive");
+      }
+
+      function resetFn() {
+        play.removeEventListener("click", playFn);
+        stop.removeEventListener("click", stopFn);
+        clearInterval(timer);
+        resetAvtive();
+        this.classList.add("btnactive");
+        idNum = 0;
+        timeTxt.innerText = idNum;
+        setTimeout(() => {
+          resetAvtive();
+          play.addEventListener("click", playFn);
+          stop.addEventListener("click", stopFn);
+        }, 1500);
+      }
+    </script>
+  </body>
+</html>

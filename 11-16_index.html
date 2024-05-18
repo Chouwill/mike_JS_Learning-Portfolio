@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>16 - 陣列進階操作 map</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      font-family: "Microsoft JhengHei", "Heiti TC", "sans-serif";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: 50% 0%;
+      background-image: url("../../images/bg/3.jpg");
+    }
+    #app {
+      border: 1px solid #000;
+    }
+    li {
+      list-style-type: none;
+    }
+    ul.tit {
+      overflow: hidden;
+    }
+    ul.tit > li {
+      text-align: center;
+      padding: 20px 50px;
+    }
+    .bgcolor {
+      background-color: #888;
+      border-bottom: 1px solid #000;
+    }
+    .bgcolor > li {
+      color: #fff;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <ul class="tit bgcolor">
+        <li>名字 + 性別</li>
+      </ul>
+      <div class="itemList">
+        <ul id="itemBox" class="tit">
+          <li>小豬</li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      // 1. 定義一個陣列，陣列中的每個元素都是一個物件，物件有兩個屬性：name 和 sex
+      const arr = [
+        {
+          name: "遊戲",
+          sex: "boy",
+        },
+        {
+          name: "幸子",
+          sex: "girl",
+        },
+        {
+          name: "城之內",
+          sex: "boy",
+        },
+        {
+          name: "海馬",
+          sex: "boy",
+        },
+        {
+          name: "本田",
+          sex: "boy",
+        },
+      ];
+
+      // 2. 使用 Array.map 方法對陣列進行操作。map 方法會對陣列中的每個元素執行一個函數，
+      //    並將函數的返回值組成一個新的陣列。在這裡，我們的函數是一個箭頭函數，它接受一個參數 item，
+      //    item 代表陣列中的當前元素（也就是一個物件），然後返回一個字符串，這個字符串是物件的 name 屬性和 sex 屬性連在一起。
+      //    因此，newArr 是一個新的陣列，它的元素是原陣列中的每個物件的 name 屬性和 sex 屬性連在一起的字符串。
+      const newArr = arr.map((item) => {
+        // item 是一個自定義的參數，代表陣列中的當前元素，你可以將它更換為任何你想要的名稱
+        return `${item.name}${item.sex}`;
+      });
+      console.log(newArr);
+
+      // 3. 定義一個空字符串 html，然後使用 Array.forEach 方法對 newArr 陣列進行操作。
+      //    forEach 方法會對陣列中的每個元素執行一個函數，但不會改變原陣列。
+      //    在這裡，我們的函數是一個箭頭函數，它接受一個參數 item，item 代表陣列中的當前元素（也就是一個字符串），
+      //    然後將一個 li 標籤，其內容是當前元素，添加到 html 字符串的後面。
+      let html = "";
+      newArr.forEach((item) => {
+        html += `<li>${item}</li>`;
+      });
+
+      // 4. 將 id 為 "itemBox" 的 ul 元素的內部 HTML 設為 html 字符串，也就是將 ul 元素的內容替換為我們剛剛生成的 li 標籤。
+      document.querySelector("#itemBox").innerHTML = html;
+      // ["小豬boy", "小烏龜girl", "小鳥boy", "小貓boy", "小狗boy"]
+    </script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11 - 陣列進階操作 forEach (2)</title>
+  </head>
+  <link rel="stylesheet" href="./style.css" />
+  <body>
+    <div id="app">
+      <ul class="tit_select">
+        <li></li>
+        <li>
+          <select id="user_money">
+            <option value="0">選擇錢</option>
+            <option value="300">大於300</option>
+            <option value="700">大於700</option>
+            <option value="10000">大於10000</option>
+          </select>
+        </li>
+        <li>
+          <select id="user_age">
+            <option value="0">選擇年齡</option>
+            <option value="10">10歲以上</option>
+            <option value="20">20歲以上</option>
+            <option value="30">30歲以上</option>
+          </select>
+        </li>
+        <li>
+          <select id="user_sex">
+            <option value="no">選擇性別</option>
+            <option value="boy">boy</option>
+            <option value="girl">girl</option>
+          </select>
+        </li>
+      </ul>
+      <ul class="tit">
+        <li>名字</li>
+        <li>戶頭錢</li>
+        <li>年齡</li>
+        <li>性別</li>
+      </ul>
+      <div class="itemList">
+        <!-- <ul class="tit2">
+                  <li>小豬</li>
+                  <li>12000</li>
+                  <li>12</li>
+                  <li>boy</li>
+              </ul> -->
+      </div>
+    </div>
+
+    <script src="./data.js"></script>
+    <script>
+      // 1. 選擇 HTML 元素並將它們賦值給變數
+      const itemList = document.querySelector(".itemList");
+      const user_money = document.querySelector("#user_money");
+      const user_age = document.querySelector("#user_age");
+      const user_sex = document.querySelector("#user_sex");
+
+      // 2. 從外部資料源（在這裡是 data.js）獲取資料並將其賦值給 newData 變數
+      const newData = data;
+
+      // 3. 定義一個空字串，稍後將用於存儲 HTML 內容
+      let html = "";
+
+      // 4. 定義一個函數 renderDOM，該函數將遍歷 newData 陣列並為每個元素生成一個 HTML 字串
+      function renderDOM(newArr) {
+        html = "";
+        // 使用 forEach 方法遍歷 newData 陣列
+        newArr.forEach((item) => {
+          // 對於 newData 陣列中的每個元素（在這裡被稱為 item），我們都生成一個 HTML 字串並將其添加到 html 變數中
+          html += `<ul class="tit2">
+                      <li>${item.name}</li>
+                      <li>${item.money}</li>
+                      <li>${item.age}</li>
+                      <li>${item.sex}</li>
+                  </ul>`;
+        });
+        // 將生成的 HTML 字串設置為 itemList 元素的內部 HTML
+        itemList.innerHTML = html;
+      }
+      // 呼叫 renderDOM 函數以生成並顯示 HTML 內容
+      renderDOM(newData);
+
+      function filterMoney(data) {
+        const money = Number(data);
+        const arr = [];
+        newData.forEach((item) => {
+          if (item.money > money) {
+            arr.push(item);
+          }
+        });
+        console.log(arr);
+        renderDOM(arr);
+      }
+
+      function filterAge(data) {
+        const age = Number(data);
+        const arr = [];
+        newData.forEach((item) => {
+          if (item.age > age) {
+            arr.push(item);
+          }
+        });
+        renderDOM(arr);
+      }
+
+      function filterSex(data) {
+        let arr = [];
+        newData.forEach((item) => {
+          if (item.sex === data) {
+            arr.push(item);
+          }
+          if (data === "no") {
+            arr = newData;
+          }
+        });
+        renderDOM(arr);
+      }
+
+      user_money.addEventListener("change", (e) => {
+        filterMoney(e.target.value);
+      });
+
+      user_age.addEventListener("change", (e) => {
+        filterAge(e.target.value);
+      });
+      user_sex.addEventListener("change", (e) => {
+        filterSex(e.target.value);
+      });
+    </script>
+  </body>
+</html>

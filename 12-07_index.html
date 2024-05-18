@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>數字千分位符號</title>
+  </head>
+  <body>
+    <script>
+      function Num(num) {
+        // 將數字轉換為字串
+        const str = num + "";
+        // 將字串反轉並轉換為陣列
+        const strArr = [...str].reverse();
+        const arr = [];
+        let i = 0;
+        strArr.forEach((item) => {
+          i++;
+          // 當 i 大於 3 時，將 i 重置為 1，並在陣列 arr 中插入一個逗號
+          // 這是因為我們每三個數字就要插入一個逗號，所以當 i 大於 3 時，我們需要插入逗號並重置計數器 i
+          if (i > 3) {
+            i = 1;
+            arr.push(",");
+          }
+          // 將當前數字插入到陣列 arr 中
+          arr.push(item);
+        });
+
+        // 將陣列 arr 反轉並轉換為字串，這樣數字就會以千分位格式顯示
+        return arr.reverse().join("");
+      }
+
+      // 使用 Num 函數將數字 5241522 轉換為千分位格式
+      const n = Num(5241522);
+      // 打印結果，應該為 "5,241,522"
+      console.log(n);
+    </script>
+  </body>
+</html>

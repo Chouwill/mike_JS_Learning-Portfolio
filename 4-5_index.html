@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4-05 - && 語法與 || 語法</title>
+  </head>
+  <body>
+    <script>
+      const Mywallet = 50;
+      const time = "上午";
+
+
+      if(Mywallet === 50 && time === "上午"){
+        console.log("兩個條件都達成");
+      }
+      if(Mywallet === "50" && time === "上午"){
+        console.log("只有後面的條件達成，前面型別不同");
+      }
+
+
+      if(Mywallet === 10 || time === "上午"){
+        console.log("只有後面的條件達成，前面型別不同");
+        console.log("只要其中一個條件達成，就執行");
+      }
+
+
+    </script>
+  </body>
+</html>

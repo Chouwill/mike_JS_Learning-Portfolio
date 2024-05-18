@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <style>
+
+  </style>
+  <body>
+    <div class="containter">
+      <div id="app">
+        <a class="menuBtn" href="#"
+          ><span class="material-symbols-outlined"> menu </span></a
+        >
+      </div>
+      <div class="menu">
+        <a class="closeBtn" href="#"
+          ><span class="material-symbols-outlined"> close </span></a
+        >
+        <nav class="navbar">
+          <ul>
+            <li><a href="#home">首頁</a></li>
+            <li><a href="#services">服務</a></li>
+            <li><a href="#about">關於我們</a></li>
+            <li><a href="#contact">聯絡我們</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <script>
+      const menu = document.querySelector(".menu");
+      console.log(menu);
+      const menuBtn = document.querySelector(".menuBtn");
+      console.log(menuBtn);
+
+      const closeBtn = document.querySelector(".closeBtn");
+      console.log(closeBtn);
+
+      menuBtn.addEventListener("click", () => {
+        menu.classList.add("open");  //請解釋這裡為何是使用menu.classlist來新增移除操作
+      });
+      closeBtn.addEventListener("click", () => {
+        menu.classList.remove("open");
+      });
+    </script>
+  </body>
+</html>

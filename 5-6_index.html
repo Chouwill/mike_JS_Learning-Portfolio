@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>操作DOM屬性</title>
+  </head>
+  <body>
+    <div class="app">
+      <a class="YahooBtn" href="#">YAHOO</a>
+    </div>
+
+    <script>
+      function handleLink() {
+        console.log("click");
+        document.querySelector(".YahooBtn").href = "https://www.google.com/";
+        document.querySelector(".YahooBtn").target = "_blank";
+      }
+
+      document.querySelector(".YahooBtn").addEventListener("click", handleLink);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>字串反轉</title>
+  </head>
+  <body>
+    <script>
+        function reverseFn(txt) {
+          // split("")：將字串 txt 分割成一個個單獨的字元，並返回一個包含這些字元的陣列。
+          // reverse()：將陣列中的元素順序反轉。
+          // join("")：將陣列中的元素連接成一個字串。注意，這裡應該使用 join("")，否則元素之間會被插入逗號。
+          return txt.split("").reverse().join("");
+        }
+      
+        // 使用 reverseFn 函數將 "HelloMike!" 反轉，並將結果存儲在 text 變數中。
+        const text = reverseFn("HelloMike!"); // ==> !ekiMolleH
+      
+        // 將 text 變數的值打印到控制台。
+        console.log(text);
+      </script>
+  </body>
+</html>

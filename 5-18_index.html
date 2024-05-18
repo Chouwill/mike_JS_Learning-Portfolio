@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function (return) value</title>
+  </head>
+  <body>
+    <div class="app">
+      <a href="#" class="btn">請點我</a>
+    </div>
+
+    <script>
+      function addValue(a, b) {
+        return a + b;
+      }
+
+      function addStringName(name) {
+        return `歡迎${name}`;
+      }
+
+      const add = addValue(5, 2);
+      const welcomeName = addStringName("XXXXX人");
+
+      console.log(add);
+      console.log(welcomeName);
+    </script>
+  </body>
+</html>

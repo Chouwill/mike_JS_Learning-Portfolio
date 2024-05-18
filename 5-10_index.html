@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>innerHTML & innerText</title>
+  </head>
+  <body>
+    <button class="btn">請點我</button>
+    <p class="txt"></p>
+
+    <script>
+      const title = document.querySelector(".txt");
+      const btn = document.querySelector(".btn");
+
+      const txt = `我是一段文字<a href="#">yahoo</a>我是YAHOO官網連結`;
+
+      btn.addEventListener("click", function () {
+        title.innerHTML = txt;
+      });
+    </script>
+  </body>
+</html>

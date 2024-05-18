@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>操作DOM style</title>
+  </head>
+  <body>
+    <h2 class="title">HELLO 你好啊 Javascript</h2>
+
+    <a class="textBig" href="">變大</a>
+    <a class="textSmall" href="">變小</a>
+    <a class="textNormal" href="">正常</a>
+
+    <script>
+      const title = document.querySelector(".title");
+
+      const textBig = document.querySelector(".textBig");
+      const textSmall = document.querySelector(".textSmall");
+      const textNormal = document.querySelector(".textNormal");
+
+      function textBigbtn(e) {
+        e.preventDefault();
+        title.style.fontSize = "200px";
+      }
+      function textSmallbtn(e) {
+        e.preventDefault();//  a標籤才需要
+
+        title.style.fontSize = "20px";
+      }
+      function textNormalbtn(e) {
+        e.preventDefault();
+
+        title.style.fontSize = "25px";
+      }
+
+      textBig.addEventListener("click", textBigbtn);
+      textSmall.addEventListener("click", textSmallbtn);
+      textNormal.addEventListener("click", textNormalbtn);
+    </script>
+  </body>
+</html>

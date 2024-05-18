@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>while迴圈練習第2次</title>
+  </head>
+  <style>
+    .father{
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+    }
+  </style>
+  <body>
+    <div class="father">
+      <h1 class="child">我是第1個</h1>
+    </div>
+
+    <script>
+      let Daddy = document.querySelector(".father");
+      console.log(Daddy);
+
+      let i = 0;
+
+      let txt = "";  // 賦予空值
+
+      while (i < 5) {
+        console.log(i);
+        i = i + 1;
+        txt += `<h1 class="child father">我是第${i}個</h1>`;   //想詢問 為何我這裡的結構需要child father才有辦法每一個都有顏色
+        console.log(txt);
+      }
+      Daddy.innerHTML = txt;    // 將 txt 變數的內容賦值給 Daddy.innerHTML
+    </script>
+  </body>
+</html>

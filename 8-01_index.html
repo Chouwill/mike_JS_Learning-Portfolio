@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8-1計時器 setInterval()</title>
+  </head>
+  <body>
+    <h1 id="time"></h1>
+
+    <script>
+      let time = document.querySelector("#time");
+      console.log(time);
+
+      let timeNum = 0;
+      time.innerHTML = timeNum;
+
+      const timer = setInterval(() => {
+        timeNum += 1;
+        time.innerHTML = timeNum;
+        if (timeNum >= 10) {
+          clearInterval(timer);
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

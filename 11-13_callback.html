@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13 - 關於 Function Callback 補充</title>
+  </head>
+  <body>
+    <script>
+      // 定義一個陣列
+      const a = [1, 2, 3, 4];
+
+      // 使用箭頭函式作為回調函數，對陣列的每一個元素進行操作
+      a.forEach((item) => {
+        console.log(item);
+      });
+
+      // 使用一般的函數作為回調函數，對陣列的每一個元素進行操作
+      a.forEach(function (item) {
+        console.log(item);
+      });
+
+      // 定義一個函數，該函數接受一個回調函數作為參數
+      function mike(callback) {
+        // 使用 setTimeout 函數，讓回調函數在 2 秒後被調用
+        setTimeout(() => {
+          callback(true);
+        }, 2000);
+      }
+
+      // 調用 mike 函數，並傳入一個匿名函數作為回調函數
+      mike(function (bool) {
+        console.log("執行了callback", bool);
+      });
+    </script>
+  </body>
+</html>

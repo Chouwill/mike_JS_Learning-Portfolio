@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>淺拷貝與深拷貝-1</title>
+  </head>
+  <body>
+    <script>
+      // 創建一個名為 arr1 的陣列
+      const arr1 = ["mike", "andy1"];
+
+      // 使用展開運算符 ... 創建一個新的陣列 arr2，並將 arr1 的所有元素複製到 arr2
+      // 展開運算符 ... 創建的是淺複製，所以如果修改 arr1 的元素，arr2 的對應元素不會改變
+      const arr2 = [...arr1];
+
+      // 修改 arr1 的第二個元素
+      arr1[1] = "jacky";
+
+      // 打印 arr1 和 arr2 到控制台
+      console.log(arr1); // ["mike", "jacky"]
+      console.log(arr2); // ["mike", "andy1"]
+
+      // 創建一個名為 arr5 的陣列
+      const arr5 = ["jason", "will"];
+
+      // 使用 slice() 方法創建一個新的陣列 arr6，並將 arr5 的所有元素複製到 arr6
+      // slice() 方法創建的也是淺複製，所以如果修改 arr5 的元素，arr6 的對應元素不會改變
+      const arr6 = arr5.slice(0);
+
+      // 打印 arr6 到控制台
+      console.log(arr6); // ["jason", "will"]
+    </script>
+  </body>
+</html>

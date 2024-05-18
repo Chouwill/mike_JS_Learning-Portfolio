@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>陣列迴圈渲染組合</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background-color: #2e2770;
+    }
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background-color: #2e2770;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Microsoft JhengHei", "Heiti TC", "sans-serif";
+    }
+    #app {
+      width: 500px;
+      padding: 40px 50px;
+      background-color: #f3f3f3;
+    }
+
+    #app > a.More {
+      float: right;
+      margin-top: 20px;
+      color: #000;
+    }
+
+    #app > a.More:hover {
+      color: #2e2770;
+    }
+
+    #app > h1 {
+      display: block;
+      width: 100%;
+      font-size: 28px;
+      border-left: 8px solid #2e2770;
+      padding-left: 20px;
+    }
+
+    #app > ul {
+      padding: 0;
+    }
+    #app > ul > li {
+      display: block;
+      width: 100%;
+      line-height: 50px;
+      list-style-type: none;
+      border-bottom: 1px dashed #888;
+      font-size: 16px;
+      padding: 0 0 0 20px;
+    }
+    #app > ul > li > a {
+      text-decoration: none;
+      color: #333;
+    }
+    #app > ul > li > a:hover {
+      color: #2e2770;
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <header></header>
+    <div id="app">
+      <h1>即時新聞</h1>
+      <ul id="list">
+        <!-- <li><a href="javascript:;" target="_blank"></a></li>-->
+      </ul>
+      <a class="More" href="javascript:;">More ></a>
+    </div>
+    <footer></footer>
+    <script>
+      const title = [
+        "31歲女繼承8.5億遺產!海選50人「幫忙花錢」",
+        "外媒：台灣反抗中國選出「麻煩製造者」",
+        "罷免侯友宜」破7.6萬人加入 謝龍介發聲...",
+        "BBC為何台灣大選對世界很重要?",
+        "網美浴室自拍爆紅短片800萬次觀看",
+        "男子辭職後「刪光4000份公司文件」",
+      ];
+      const url = [
+        "https://www.ettoday.net/news/20240113/2663120.htm",
+        "https://www.ettoday.net/news/20240113/2663739.htm",
+        "https://www.ettoday.net/news/20240114/2663821.htm",
+        "https://www.ettoday.net/news/20240113/2663642.htm",
+        "https://www.ettoday.net/news/20240113/2663072.htm",
+        "https://www.ettoday.net/news/20240112/2662372.htm",
+      ];
+
+      let html = "";
+
+      for (let i = 0; i < title.length; i++) {
+        console.log(i);
+        html += `<li><a href="${url[i]}" target="_blank">${title[i]}</a></li>`;
+      }
+      console.log(html);
+      document.querySelector("#list").innerHTML = html;
+    </script>
+  </body>
+</html>

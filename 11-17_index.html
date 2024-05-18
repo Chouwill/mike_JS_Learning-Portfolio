@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>陣列進階操作 filter() - 三條件組合</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      font-family: "Microsoft JhengHei", "Heiti TC", "sans-serif";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url("../images/bg2.jpg");
+      background-size: cover;
+      background-position: 50% 0%;
+    }
+    li {
+      list-style-type: none;
+    }
+    #app {
+      width: 500px;
+    }
+    #app > ul.tit {
+      width: 100%;
+      overflow: hidden;
+      background-color: #fff;
+    }
+    #app > ul.tit > li {
+      width: 25%;
+      line-height: 30px;
+      float: left;
+      color: #000;
+      text-align: center;
+      border: 1px solid #000;
+    }
+
+    ul.tit2 {
+      width: 100%;
+      overflow: hidden;
+      background-color: rgba(256, 256, 256, 0.6);
+    }
+    ul.tit2 > li {
+      width: 25%;
+      line-height: 30px;
+      float: left;
+      color: #000;
+      text-align: center;
+      border: 1px solid #000;
+      font-size: 12px;
+    }
+    ul.tit_select {
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+    ul.tit_select > li {
+      display: block;
+      width: 25%;
+      height: 30px;
+      line-height: 30px;
+      float: left;
+      color: #000;
+      text-align: center;
+      font-size: 12px;
+    }
+    ul.tit_select > li > select {
+      display: block;
+      width: 90%;
+      height: 100%;
+      border: 0;
+      margin: 0 auto;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <ul class="tit_select">
+        <li></li>
+        <li>
+          <select id="user_money">
+            <option value="0">選擇錢</option>
+            <option value="300">大於300</option>
+            <option value="700">大於700</option>
+            <option value="10000">大於10000</option>
+          </select>
+        </li>
+        <li>
+          <select id="user_age">
+            <option value="0">選擇年齡</option>
+            <option value="10">10歲以上</option>
+            <option value="20">20歲以上</option>
+            <option value="30">30歲以上</option>
+          </select>
+        </li>
+        <li>
+          <select id="user_sex">
+            <option value="no">選擇性別</option>
+            <option value="boy">boy</option>
+            <option value="girl">girl</option>
+          </select>
+        </li>
+      </ul>
+      <ul class="tit">
+        <li>名字</li>
+        <li>戶頭錢</li>
+        <li>年齡</li>
+        <li>性別</li>
+      </ul>
+      <div class="itemList">
+        <!-- <ul class="tit2">
+                <li>小豬</li>
+                <li>12000</li>
+                <li>12</li>
+                <li>boy</li>
+            </ul> -->
+      </div>
+    </div>
+
+    <script src="./11_11-12_forEach-ALL/data.js"></script>
+    <script>
+      // 1. 首先，我們選擇需要的DOM元素並將其存儲為變量
+      const itemList = document.querySelector(".itemList");
+      const user_money = document.querySelector("#user_money");
+      const user_age = document.querySelector("#user_age");
+      const user_sex = document.querySelector("#user_sex");
+
+      // 我們還創建了一些變量來存儲當前的過濾條件和數據
+      let newData = data;
+      let html = "";
+      let money = 0;
+      let age = 0;
+      let sex = "no";
+
+      // 2. 然後，我們定義了一個函數來根據當前的過濾條件更新顯示的列表
+      function DOMrender(arr) {
+        html = "";
+        itemList.innerHTML = "";
+        arr.forEach((item) => {
+          html += `
+      <ul class="tit2">
+        <li>${item.name}</li>
+        <li>${item.money}</li>
+        <li>${item.age}</li>
+        <li>${item.sex}</li>
+      </ul>
+    `;
+        });
+        itemList.innerHTML = html;
+      }
+
+      // 3. 我們還定義了一個函數來更新過濾條件並重新過濾數據
+      function SeachData(data, type) {
+        switch (type) {
+          case "money":
+            money = Number(data); // 將輸入的數據轉換為數字，因為我們需要將其與數字進行比較
+            break;
+          case "age":
+            age = Number(data); // 同上
+            break;
+          case "sex":
+            sex = data; // 這裡不需要轉換，因為性別已經是字符串
+            break;
+        }
+        //type 是 switch 語句的表達式。根據 type 的值，會執行對應的 case 語句：
+
+        // 如果 type 等於 "money"，則執行 money = Number(data);，並且由於 break 語句，switch 語句會在此結束，不會再檢查其他的 case。
+        // 如果 type 等於 "age"，則執行 age = Number(data);，並且由於 break 語句，switch 語句會在此結束，不會再檢查其他的 case。
+        // 如果 type 等於 "sex"，則執行 sex = data;，並且由於 break 語句，switch 語句會在此結束，不會再檢查其他的 case。
+        // 如果 type 不等於任何 case 的值，則不會執行任何代碼。在這個 switch 語句中，沒有提供 default 語句，所以如果 type 不等於 "money"、"age" 或 "sex"，則不會執行任何操作。
+
+        // 使用過濾條件過濾數據
+        const filterData = newData
+          .filter((item) => {
+            return item.money > money;
+          })
+          .filter((item) => {
+            return item.age > age;
+          })
+          .filter((item) => {
+            if (sex === "no") {
+              return item;
+            }
+            return item.sex === sex;
+          });
+
+        // 更新顯示的列表
+        DOMrender(filterData);
+      }
+
+      // 4. 最後，我們為每個選擇元素添加事件監聽器，當用戶更改選擇時，我們會更新過濾條件並重新過濾數據
+      user_money.addEventListener("change", (e) => {
+        SeachData(e.target.value, "money");
+      });
+      user_age.addEventListener("change", (e) => {
+        SeachData(e.target.value, "age");
+      });
+      user_sex.addEventListener("change", (e) => {
+        SeachData(e.target.value, "sex");
+      });
+
+      // 初始渲染列表
+      DOMrender(newData);
+    </script>
+  </body>
+</html>

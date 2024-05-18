@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>淺拷貝與深拷貝 - 3 : JSON.stringify() & JSON.parse()</title>
+  </head>
+  <body>
+    <script>
+      const obj1 = {
+        name: "mike",
+        info: {
+          age: 12,
+          address: "taiwan",
+          sex: "boy",
+          interest: {
+            code: "javascript",
+            sports: "basketball",
+            watch: "movie",
+          },
+        },
+      };
+      // const str = JSON.stringify(obj1);      //  另一種寫法拆分
+      // const obj2 = JSON.parse(str);
+
+      // 定義一個名為 deepCopy 的函數，該函數使用 JSON.stringify() 和 JSON.parse() 實現深拷貝
+      const deepCopy =()=>{
+        return JSON.parse(JSON.stringify(obj1)); // 2. JSON.parse轉換成真的物件
+      }
+
+      // 使用 deepCopy 函數創建一個新的物件 obj2，該物件是 obj1 的深拷貝
+      const obj2 = deepCopy(obj1);
+
+      // const obj2 = JSON.stringify(obj1)  //  1. JSON.stringify先轉字串
+
+      // 修改 obj1 的 info 屬性的 interest 屬性的 code 屬性
+      // 由於 obj1 和 obj2 的 info 屬性指向的是兩個不同的物件，所以這個修改不會影響到 obj2
+      obj1.info.interest.code = "JAVA";
+
+      // 打印 obj2 到控制台
+      // 由於 obj1 和 obj2 的 info 屬性指向的是兩個不同的物件，所以 obj2 的 info 屬性的 interest 屬性的 code 屬性仍然是 "javascript"
+      console.log(obj2);
+    </script>
+  </body>
+</html>

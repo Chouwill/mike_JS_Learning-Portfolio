@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>while 迴圈、for迴圈</title>
+  </head>
+  <style>
+    h2 {
+      font-size: 40px;
+      text-align: center;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: greenyellow;
+    }
+  </style>
+  <body>
+    <h2>01 - while 迴圈至03 - for迴圈 - 2</h2>
+
+    <div class="app">
+      <h3>3333333333333</h3>
+      <!--  會被innerHTML覆蓋  -->
+      <h1 class="box">1</h1>
+      <h2>33333</h2>
+      <!--  會被innerHTML覆蓋  -->
+    </div>
+
+    <script>
+      // 選擇 class 為 app 的元素
+      const app = document.querySelector(".app");
+      // 初始化迴圈計數器 i 和用於存儲 HTML 字串的變數 html
+      let i = 0;
+      let html = "";
+
+      // 當 i 小於 20 時，執行迴圈
+      while (i < 20) {
+        // 輸出當前的 i 值
+        console.log(i);
+        // 將 i 值增加 1
+        i = i + 1; // i +=  1; 等於  i = i + 1;
+        // 將一個新的 h1 標籤（內容為 i 的當前值）添加到 html 字串中
+        html += `<h1 class="box">${i}</h1>`;
+        // 輸出當前的 html 字串
+        console.log(html);
+        // 第一次 i = 0; 並+1 為1
+        // 第二次 i = 1; 並+1 為2
+      }
+
+      // 將 app 元素的內容設定為 html 字串，這將替換 app 元素的當前內容
+      app.innerHTML = html;
+
+      //    迴圈在第一次迭代時，`i` 的值確實是 `0`，而不是 `1`。這是因為在 `console.log(i);` 這行程式碼執行時，`i` 的值還沒有增加。
+
+      // 這裡是迴圈的每次迭代中發生的事情：
+
+      // 1. 檢查 `i < 20` 是否為真。如果為假（也就是說，`i` 已經達到或超過 `20`），則停止迴圈。
+      // 2. 執行 `console.log(i);`，將當前的 `i` 值輸出到控制台。
+      // 3. 執行 `i = i + 1;`，將 `i` 的值增加 `1`。
+      // 4. 回到步驟 1，再次檢查 `i < 20`。
+
+      // 所以，在第一次迭代時，`console.log(i);` 會輸出 `0`，然後 `i` 的值增加 `1`。在第二次迭代時，`console.log(i);` 會輸出 `1`，然後 `i` 的值增加 `1`，變為 `2`，以此類推。
+    </script>
+  </body>
+</html>

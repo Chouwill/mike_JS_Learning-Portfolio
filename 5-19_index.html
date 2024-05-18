@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function default value</title>
+  </head>
+  <body>
+    <div class="app">
+      <a href="#" class="btn">請點我</a>
+    </div>
+
+    <script>
+      // 可以設預設值
+      function addValue(a = 1, b = 1) {
+        return a + b;
+      }
+
+      function addStringName(name = 'red') {
+        return `歡迎${name}`;
+      }
+
+      //未傳值   變NaN undefined
+      const add = addValue();
+      const welcomeName = addStringName();
+
+      console.log(add);
+      console.log(welcomeName);
+    </script>
+  </body>
+</html>

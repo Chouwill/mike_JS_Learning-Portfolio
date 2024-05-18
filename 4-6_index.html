@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const Mylunch = "火腿三明治";
+
+      switch (Mylunch) {
+        case "火腿三明治": //要被判斷的東西
+          console.log("收35元");
+          break;   // 這層case已經判斷完成
+        case "花生三明治": 
+          console.log("收15元");
+          break;   
+        case "熱狗三明治": 
+          console.log("收55元");
+          break;
+          default:  //default = else用法
+          console.log("老闆記錯了，你都沒點餐");
+          break;   
+      }
+    </script>
+  </body>
+</html>

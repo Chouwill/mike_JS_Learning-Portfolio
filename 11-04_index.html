@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04 - 陣列迴圈應用一</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background-color: #2e2770;
+    }
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background-color: #2e2770;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Microsoft JhengHei", "Heiti TC", "sans-serif";
+    }
+    #app {
+      width: 50%;
+    }
+
+    #app > a.More {
+      float: right;
+      margin-top: 20px;
+      color: #000;
+    }
+
+    #app > a.More:hover {
+      color: #2e2770;
+    }
+
+    #app > h1 {
+      display: block;
+      width: 100%;
+      font-size: 28px;
+      border-left: 8px solid #2e2770;
+      padding-left: 20px;
+    }
+
+    #app > ul {
+    }
+    #app > ul > li {
+      display: block;
+      width: 100%;
+      line-height: 50px;
+      list-style-type: none;
+      border-bottom: 1px dashed #888;
+      font-size: 16px;
+      padding: 0 0 0 20px;
+    }
+    #app > ul > li > a {
+      text-decoration: none;
+      color: #333;
+    }
+    #app > ul > li > a:hover {
+      color: #2e2770;
+    }
+  </style>
+  <body>
+    <header></header>
+    <div id="app">
+      <h1>即時新聞</h1>
+      <ul id="list">
+        <!-- <li><a href="javascript:;"></a></li>-->
+      </ul>
+      <a class="More" href="javascript:;">More ></a>
+    </div>
+    <footer></footer>
+    <script>
+      // 1. 定義新聞數據
+      const news = [
+        {
+          title: "會計年度最後一個月 美國防部狂花1.4億買蝦蟹...",
+          url: "https://news.ebc.net.tw/News/Article/155505",
+        },
+        {
+          title: "大逆轉！情侶照1.5萬變16萬 當事人道歉了...",
+          url: "https://news.ebc.net.tw/News/Article/155504",
+        },
+        {
+          title: "台南是民主聖地？謝龍介：變民主很火大...",
+          url: "https://news.ebc.net.tw/News/Article/155503",
+        },
+        {
+          title: "槓王選立委！韓笑回他長大了 潘恆旭尷尬回應...",
+          url: "https://news.ebc.net.tw/News/Article/155502",
+        },
+        {
+          title: "捷運西門站藥妝搶駐！日藥妝210萬標下6店面...",
+          url: "https://news.ebc.net.tw/News/Article/155501",
+        },
+        {
+          title: "她全身麻醉動刀 苦求男友陪！遭嗆：我要上班...",
+          url: "https://news.ebc.net.tw/News/Article/155499",
+        },
+        {
+          title: "小黃司機遭3人挾持30公里！傳LINE求救逃脫...",
+          url: "https://news.ebc.net.tw/News/Article/155497",
+        },
+      ];
+      // 2. 初始化一個空字符串，用於存儲生成的HTML
+      let html = "";
+
+      // 3. 遍歷新聞數據
+      for (let i = 0; i < news.length; i++) {
+        // 4. 將每條新聞數據轉換為HTML格式，並添加到html字符串中
+        html += `<li><a href="${news[i].url}">"${news[i].title}"</a></li>`;
+        //`<li><a href="${news[i].url}">"${news[i].title}"</a></li>`：這是一個模板字串，用於生成HTML。模板字串使用反引號(``)包裹，並可以包含插值表達式，插值表達式使用${}包裹。在這裡，${news[i].url}和${news[i].title}會被替換為對應的新聞URL和標題。
+
+        // news[i].url和news[i].title：這兩個是從新聞數據中取出的URL和標題。news[i]表示新聞數據的第i條，.url和.title是取出該條新聞的URL和標題。
+
+        // 5. 在控制台打印當前的索引值，用於調試
+        console.log(i);
+      }
+      // 6. 將生成的HTML插入到頁面的列表中
+      document.querySelector("#list").innerHTML = html;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>陣列簡單應用</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="./css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" href="" /> -->
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center center;
+      font-family: "Microsoft JhengHei", "Heiti TC", "sans-serif";
+    }
+
+    #app {
+      position: relative;
+      width: 320px;
+      height: 213px;
+    }
+
+    a#angleleft,
+    a#angleright {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      display: block;
+      width: 40px;
+      height: 80px;
+      margin-top: -40px;
+    }
+    a#angleleft {
+      left: -50px;
+      color: red;
+    }
+
+    a#angleright {
+      right: -50px;
+      color: red;
+    }
+    h2#pagination {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <a id="angleleft"><i class="fas fa-angle-left fa-5x"></i></a>
+      <img id="photo" src="../images/08/small/a1.jpg" alt="" />
+      <a id="angleright"><i class="fas fa-angle-right fa-5x"></i></a>
+      <h2 id="pagination">1/5</h2>
+    </div>
+
+    <script>
+      // 1. 選擇HTML元素並將它們存儲在變量中
+      const angleleft = document.querySelector("#angleleft");
+      const angleright = document.querySelector("#angleright");
+      const photo = document.querySelector("#photo");
+      const pagination = document.querySelector("#pagination");
+
+      // 2. 創建一個包含所有圖片路徑的陣列，並設置一個變量來跟蹤當前顯示的圖片索引
+      const imgArr = [
+        "../images/08/small/a1.jpg",
+        "../images/08/small/a2.jpg",
+        "../images/08/small/a3.jpg",
+        "../images/08/small/a4.jpg",
+        "../images/08/small/a5.jpg",
+      ];
+      const imgArr5 = [
+        "https://picsum.photos/300/200/?random=10",
+        "https://picsum.photos/300/200/?random=1",
+        "https://picsum.photos/300/200/?random=20",
+        "https://picsum.photos/300/200/?random=50",
+        "https://picsum.photos/300/200/?random=2",
+      ];
+      let pageIdx = 0;
+
+      // 3. 為左右箭頭添加點擊事件監聽器
+      angleleft.addEventListener("click", () => {
+        pageIdx--;
+        if (pageIdx < 0) {
+          pageIdx = 4;
+        }
+        // 更新圖片和頁碼
+        changeImg();
+      });
+      angleright.addEventListener("click", () => {
+        pageIdx++;
+        if (pageIdx > 4) {
+          pageIdx = 0;
+        }
+        // 更新圖片和頁碼
+        changeImg();
+      });
+
+      // 4. 定義一個函數來更新圖片和頁碼
+      function changeImg() {
+        // 更新頁碼
+        // 將pagination元素的內部文字設置為當前頁碼與總頁數的格式，例如"1/5"
+        // 使用模板字串（`${}`）來插入變量值
+        // 注意，由於陣列索引從0開始，所以要將pageIdx加1才能得到正確的頁碼
+        pagination.innerText = `${pageIdx + 1}/${imgArr.length}`;
+
+        // 更新圖片
+        // 將photo元素的src屬性設置為當前圖片的路徑
+        // 圖片路徑從imgArr陣列中獲取，索引為pageIdx
+        photo.src = imgArr5[pageIdx];
+      }
+
+      // 初始化圖片和頁碼
+      changeImg();
+    </script>
+  </body>
+</html>

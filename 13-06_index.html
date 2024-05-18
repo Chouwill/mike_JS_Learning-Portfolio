@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原生 fetch</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 拉取鄉鎮資料
+       * https://vue-lessons-api.vercel.app/city/list
+       */
+
+      // 發送 GET 請求到指定的 URL
+      fetch("https://vue-lessons-api.vercel.app/city/list")
+        // fetch 返回一個 Promise，當請求完成時，這個 Promise 會解析為 Response 物件
+        .then((res) => {
+          // 使用 Response 物件的 json 方法來解析回應的 JSON 數據
+          // json 方法也返回一個 Promise，當數據解析完成時，這個 Promise 會解析為解析後的數據
+          return res.json();
+        })
+        // 當數據解析完成，我們可以在這裡獲取到解析後的數據
+        .then((res) => {
+          // 打印解析後的數據
+          console.log(res);
+        });
+      
+      fetch(url, {
+        method: "POST" | "PUT" | PATCH | "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: "",
+          password: "",
+        }),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(`error:`, error);
+        });
+       
+    </script>
+  </body>
+</html>

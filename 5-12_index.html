@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mouseover & mouseout 事件</title>
+  </head>
+  <body>
+    <div class="app">
+      <a href="#" class="btn">開始滑動</a>
+      <p class="tit2">mouseover & mouseout 事件?</p>
+    </div>
+
+    <script>
+      let title = document.querySelector(".tit2");
+
+      let btn = document.querySelector(".btn");
+      console.log(title, btn);
+
+      btn.addEventListener("mouseover", function () {
+        title.innerHTML = "進入";
+      });
+      btn.addEventListener("mouseout", function () {
+        title.innerHTML = "出去";
+      });
+    </script>
+  </body>
+</html>

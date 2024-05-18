@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11-10 常見的資料格式</title>
+  </head>
+  <body>
+    <script>
+      // 定義一個數字陣列，包含了從1到10的整數。
+      const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      console.log(arr[0]); // 取出第一個元素
+
+      // 定義一個物件，包含一個屬性 `name`，其值為 "mike"。
+      const obj = {
+        name: "mike",
+      };
+      console.log(obj.name); // 取出 name 屬性的值
+
+      // 定義一個二維陣列，每個元素都是一個陣列，包含一個日期和一個網址。
+      const arrArr = [
+        ["2019/01/01", "https://www.cwb.gov.tw/V7/earthquake/"],
+        ["2019/01/02", "https://www.cwb.gov.tw/V7/earthquake/"],
+      ];
+      console.log(arrArr[0][0]); // 取出第一個元素的第一個子元素
+
+      // 定義一個物件陣列，每個物件都包含一個 `date` 屬性和一個 `url` 屬性。
+      const arrObj = [
+        {
+          date: "2019/01/01",
+          url: "https://www.cwb.gov.tw/V7/earthquake/",
+        },
+        {
+          date: "2019/01/02",
+          url: "https://www.cwb.gov.tw/V7/earthquake/",
+        },
+        {
+          date: "2019/01/03",
+          url: "https://www.cwb.gov.tw/V7/earthquake/",
+        },
+      ];
+      console.log(arrObj[0].date); // 取出第一個物件的 date 屬性的值
+
+      // 定義一個巢狀物件，包含三個屬性：`idx`、`date` 和 `userList`。其中 `userList` 是一個物件陣列，每個物件都包含一個 `name` 屬性。
+      const nested = {
+        idx: "1",
+        date: "2019/01/01",
+        userList: [
+          { name: "mike" },
+          { name: "jacky" },
+          { name: "andy" },
+          { name: "scars" },
+          { name: "ash" },
+        ],
+      };
+      console.log(nested.userList[0].name); // 取出 userList 的第一個物件的 name 屬性的值
+    </script>
+  </body>
+</html>

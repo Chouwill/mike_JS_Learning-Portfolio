@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02 - for 迴圈與 var 還有 let 的作用域概念 - 2</title>
+  </head>
+  <body>
+    <script>
+      // 使用 setTimeout 方法
+      for (var i = 0; i < 5; i++) {
+        // 使用 setTimeout 函數來延遲執行一個回調函數。這個回調函數會打印出參數 `s` 的值，也就是當前的 `i` 值。
+        // 延遲的時間是 `i` 乘以 1000 毫秒。
+        // `setTimeout` 函數的第三個參數（在這裡是 `i`）會作為第一個參數（也就是回調函數）的參數。
+        // 所以在這裡，每個 `setTimeout` 的回調函數都會接收到當時迴圈的 `i` 值作為參數 `s`。
+        setTimeout(
+          (s) => {
+            console.log(s);
+          },
+          1000 * i,
+          i
+        );
+      }
+
+      //  立即函式 方法
+      // for (var i = 0; i < 5; i++) {
+      //   (function (s) {
+      //     setTimeout(() => {
+      //       // console.log(s);
+      //     }, 1000 * i, i);
+      //   })(i);
+      // }
+    </script>
+  </body>
+</html>
