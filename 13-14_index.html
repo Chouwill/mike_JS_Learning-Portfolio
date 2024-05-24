@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>?? 空值合併運算符</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+
+    <script>
+      axios.get("https://vue-lessons-api.vercel.app/city/list").then((res) => {
+        const twzip = res.data.twzip;
+        const jpzip = res.data.jpzip ?? { city: [] };
+        // if (res.data.jpzip === undefined) {
+        //   jpzip = {};
+        // }
+
+        console.log(twzip);
+        console.log(jpzip);
+      });
+
+      const str1 = null ?? "default null";
+      console.log(str1); // -> default null
+      const str2 = undefined ?? "default undefined";
+      console.log(str2); // -> default undefined
+      const int = 0 ?? 55;
+      console.log(int); // -> 0
+
+      //  1.在 axios.get 的 .then 處理程序中，?? 運算符用於處理 res.data.jpzip 的       undefined 值。如果 res.data.jpzip 為 undefined，則 jpzip 將被賦值為 { city: [] }。否則，jpzip 將被賦值為 res.data.jpzip 的值。
+
+      //   2.在後面的程式碼中，?? 運算符用於處理 null 和 undefined 值。例如，str1 被賦值為 null ?? "default null"，因為 null 是空值，所以 str1 的值將為 "default null"。同樣，str2 被賦值為 undefined ?? "default undefined"，因為 undefined 是空值，所以 str2 的值將為 "default undefined"。
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>實際 Promise 案例</title>
+  </head>
+  <style>
+    /* 設定圖片的寬度為 800px */
+    img {
+      width: 800px;
+    }
+  </style>
+  <body>
+    <script>
+      /* 步驟1: 定義一個圖片的 URL */
+      const img =
+        "https://ik.imagekit.io/thecodingpro/mike-school/tr:w-1920,c-at_max/o/web%2F1701877845.jpg?alt=media&token=c54b2697-dd91-44f3-a109-7da4c2cf4c30";
+
+      /* 步驟2: 定義一個函數用於載入圖片 */
+      function loadImage(url, callback) {
+        /* 創建一個新的 Image 物件 */
+        const image = new Image();
+        /* 當圖片載入成功時，調用 callback 函數，並將 null 和 image 作為參數傳遞 */
+        image.onload = () => {
+          callback(null, image);
+        };
+        /* 當圖片載入失敗時，調用 callback 函數，並將一個新的 Error 物件作為參數傳遞 */
+        image.onerror = () => {
+          callback(new Error("圖片出錯"));
+        };
+        /* 設定圖片的 URL，這將開始載入圖片 */
+        image.src = url;
+      }
+
+      /* 步驟3: 調用 loadImage 函數，並傳遞 img 和一個 callback 函數作為參數 */
+      loadImage(img, (error, image) => {
+        /* 步驟4: 在回調函數中，如果有錯誤，則輸出錯誤並結束函數的執行 */
+        if (error) {
+          console.error(error);
+          return;
+        }
+        /* 如果沒有錯誤，則將圖片添加到 body 元素中 */
+        document.body.appendChild(image);
+      });
+    </script>
+  </body>
+</html>

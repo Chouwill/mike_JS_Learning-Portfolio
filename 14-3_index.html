@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>圖片的 loading 實作 : Promise 案例</title>
+  </head>
+  <style>
+    img {
+      width: 800px;
+    }
+  </style>
+  <body>
+    <script>
+      // 圖片的 URL
+      const img =
+        "https://ik.imagekit.io/thecodingpro/mike-school/tr:w-1920,c-at_max/o/web%2F1701877845.jpg?alt=media&token=c54b2697-dd91-44f3-a109-7da4c2cf4c30";
+
+      // 定義一個函數用於載入圖片，並返回一個 Promise
+      function loadImage(url) {
+        return new Promise((resolve, reject) => {
+          const image = new Image();
+          // 當圖片載入成功時，調用 resolve 函數，並將 image 作為參數傳遞
+          image.onload = () => {
+            resolve(image);
+          };
+          // 當圖片載入失敗時，調用 reject 函數，並將一個新的 Error 物件作為參數傳遞
+          image.onerror = () => {
+            reject(new Error("圖片出錯"));
+          };
+          // 設定圖片的 URL，這將開始載入圖片
+          image.src = url;
+        });
+      }
+
+      // 調用 loadImage 函數，並使用 then 和 catch 方法來處理成功和失敗的情況
+      loadImage(img).then((image) => {
+        // 當圖片載入成功時，將圖片添加到 body 元素中，並輸出一條訊息
+        document.body.appendChild(image);
+        console.log("loading over");
+      }).catch(error=>{
+        // 當圖片載入失敗時，輸出錯誤
+        console.error(error);
+      })
+    </script>
+  </body>
+</html>

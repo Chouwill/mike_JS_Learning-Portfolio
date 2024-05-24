@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>什麼是 Promise</title>
+  </head>
+  <body>
+    <script>
+      // 定義一個名為 `stopTime` 的函數，該函數返回一個 Promise 物件
+      function stopTime() {
+        // 創建一個新的 Promise 物件
+        return new Promise((resolve, reject) => {
+          // 使用 `setTimeout` 函數來模擬一個需要 2 秒才能完成的非同步操作
+          setTimeout(() => {
+            // 當 `setTimeout` 完成後，調用 `resolve` 函數並將 "error" 作為參數傳遞
+            // 這將會將 Promise 的狀態改變為 Fulfilled
+            resolve("error");
+          }, 2000);
+        });
+      }
+
+      // 調用 `stopTime` 函數並使用 `.then` 方法來處理 Promise
+      stopTime()
+        .then((res) => {
+          // `.then` 方法接受一個函數作為參數，該函數將在 Promise 狀態變為 Fulfilled 時被調用
+          // 並接收到 `resolve` 函數傳遞的結果
+          // 在這裡，我們將結果輸出到控制台
+          console.log(res);
+        })
+        .catch((error) => {
+          // 使用 `.catch` 方法來處理 Promise
+          // `.catch` 方法接受一個函數作為參數，該函數將在 Promise 狀態變為 Rejected 時被調用
+          // 並接收到 `reject` 函數傳遞的錯誤
+          // 在這裡，我們將錯誤輸出到控制台
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>初始化多個 API 執行處理方式 1 - Promise.all</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  </head>
+  <body>
+    <script>
+      // 定義一個陣列，其中包含多個 axios.get() 的 Promise 實例
+      const arr = [
+        axios.get("https://vue-lessons-api.vercel.app/photo/list"),
+        axios.get("https://vue-lessons-api.vercel.app/seo/home"),
+        axios.get("https://vue-lessons-api.vercel.app/city/list"),
+        // axios.get("111"),
+      ];
+      const init = async () => {
+        try {
+          // 使用 Promise.all() 方法將多個 Promise 實例包裝成一個新的 Promise 實例
+          // 當所有的 Promise 實例都成功解析時，新的 Promise 實例會解析為一個陣列，其中包含所有 Promise 實例的解析值
+          // 如果任何一個 Promise 實例拒絕（reject），新的 Promise 實例也會立即拒絕，並將該拒絕的原因作為其拒絕的原因
+          const resArr = await Promise.all(arr);
+          console.log(resArr[0].data);
+        } catch (error) {
+          // 如果新的 Promise 實例拒絕，則在這裡處理錯誤
+          console.log("錯誤處理", error);
+        }
+
+        console.log("執行其他動作");
+      };
+
+      init();
+    </script>
+  </body>
+</html>
